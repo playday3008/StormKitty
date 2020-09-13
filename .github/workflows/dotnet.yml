@@ -1,0 +1,39 @@
+name: .NET
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+          submodules: true
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.0
+    - name: Prepare StormKitty
+      working-directory: ./StormKitty/Neko
+      run: msbuild StormKitty.csproj /p:Configuration=Release -t:restore
+    - name: Build StormKitty
+      working-directory: ./StormKitty/Neko
+      run: msbuild StormKitty.csproj /p:Configuration=Release
+    - name: Prepare StormKittyBuilder
+      working-directory: ./StormKitty/StormKittyBuilder
+      run: msbuild StormKittyBuilder.csproj /p:Configuration=Release -t:restore
+    - name: Build StormKittyBuilder
+      working-directory: ./StormKitty/StormKittyBuilder
+      run: msbuild StormKitty.csproj /p:Configuration=Release
+    - uses: actions/upload-artifact@v1
+      with:
+        name: Release StormKitty
+        path: ./StormKitty/build
