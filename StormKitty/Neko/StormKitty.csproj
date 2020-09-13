@@ -178,9 +178,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if not exist $(SolutionDir)build\stub mkdir $(SolutionDir)build\stub
-copy /Y  "$(TargetPath)" "$(SolutionDir)build\stub\stub.exe"
-copy /Y  "$(TargetDir)AnonFileApi.dll" "$(SolutionDir)build\stub\AnonFileApi.dll"
-copy /Y  "$(TargetDir)DotNetZip.dll" "$(SolutionDir)build\stub\DotNetZip.dll"</PostBuildEvent>
+    <PostBuildEvent>if not exist $(ProjectDir)..\build\stub mkdir $(ProjectDir)..\build\stub
+copy /Y  "$(TargetPath)" "$(ProjectDir)..\build\stub\stub.exe"
+copy /Y  "$(TargetDir)AnonFileApi.dll" "$(ProjectDir)..\build\stub\AnonFileApi.dll"
+copy /Y  "$(TargetDir)DotNetZip.dll" "$(ProjectDir)..\build\stub\DotNetZip.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>
