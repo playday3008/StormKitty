@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StormKitty", "Neko\StormKitty.csproj", "{A16ABBB4-985B-4DB2-A80C-21268B26C73D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StormKittyBuilder", "StormKittyBuilder\StormKittyBuilder.csproj", "{98075331-1F86-48C8-AE29-29DA39A8F98B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A16ABBB4-985B-4DB2-A80C-21268B26C73D} = {A16ABBB4-985B-4DB2-A80C-21268B26C73D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
